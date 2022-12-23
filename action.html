@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creat or Join Meeting</title>
+    <link rel="stylesheet" href="public/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Matarial+Icons">
+    <link rel="stylesheet" href="public/Assets/css/style.css">
+    
+</head>
+<body style="padding-top : 3.5 rem;">
+    <nav class="navbar navbar-expand-md fixed-top">
+        <img src="public/Assets/images/google-meet-icon.png" class="logo" alt="">
+        <a href="#" class="navbar-brand text-dark">Google Meet</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">At a glance</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">How it works</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Plan and Price</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-0">
+                <li class="nav-item sign-in display-center">
+                    <a href="#" class="nav-link">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <button class = "btn btn-outline-secondary btn-lg font-weight-bold join-meeting" style="color: #1a73e8">Join the Meeting</button>
+                </li>
+                <li class="nav-item">
+                    <button class = "btn btn-lg btn-info text-light font-weight-bold new-meeting" style="background-color: #1a73e8">Start a Meeting</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="jumbotron h-100 d-flex " style="padding: 200px 20px 0px 20px;">
+            <div class="container w-50" style="padding: 50px 40px 0px 30px">
+                <h1 style ="font-size: 3 rem">Secure video conferencing<br> for everyone</h1>
+                <p style ="font-size: 20px; padding: 20px 20px 20px 0px ">
+                    Connect,collaborate, and celebrate from anywhere with<br> Google Meet
+                </p>
+                <ul class="display-center justify-content-start">
+                    <li style="padding :0;">
+                        <button class = "btn btn-lg text-light font-weight-bold display-center mr-2 new-meeting" style="background-color: #1a73e8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video-fill mr-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"/>
+                              </svg>
+                            New Meeting</button>
+                    </li>
+                    <li class="pl-2">
+                        <button class = "btn btn-lg btn-outline-secondary text-dark font-weight-bold display-center" style="background-color: #ffffff">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-keyboard-fill mr-2" viewBox="0 0 16 16">
+                        <path d="M0 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6zm13 .25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25zM2.25 8a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 8.75v-.5A.25.25 0 0 0 2.75 8h-.5zM4 8.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 5 8.75v-.5A.25.25 0 0 0 4.75 8h-.5a.25.25 0 0 0-.25.25zM6.25 8a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 7 8.75v-.5A.25.25 0 0 0 6.75 8h-.5zM8 8.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 9 8.75v-.5A.25.25 0 0 0 8.75 8h-.5a.25.25 0 0 0-.25.25zM13.25 8a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5zm-3-2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h1.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-1.5zm.75 2.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25zM11.25 6a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5zM9 6.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5A.25.25 0 0 0 9.75 6h-.5a.25.25 0 0 0-.25.25zM7.25 6a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 8 6.75v-.5A.25.25 0 0 0 7.75 6h-.5zM5 6.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 6 6.75v-.5A.25.25 0 0 0 5.75 6h-.5a.25.25 0 0 0-.25.25zM2.25 6a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h1.5A.25.25 0 0 0 4 6.75v-.5A.25.25 0 0 0 3.75 6h-1.5zM2 10.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25zM4.25 10a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-5.5z"/>
+                      </svg>
+                    <input type="text" placeholder="Enter a code" style="border: none;" class="enter-code"></button>
+                    </li>
+                    <li class="text-dark font-weight-bold cursor-pointer pl-2 join-action">Join</li>
+                </ul>
+            </div>
+            <div class="container w-50">
+                <img src="public/Assets/images/google-meet-people.jpg" alt="" class = "signin-image">
+            </div>
+        </div>
+    </main>
+    <footer class="container" style="padding: 10px 0px 0px 0px"><h6>Learn more about<span class="learn-more" style="color: #1a73e8"> google meet.</span></h6></footer>
+    <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function()
+        {
+            $(document).on("click", ".join-meeting", function(){
+                $('.enter-code').focus()
+            })
+            $(document).on("click", ".join-action", function(){
+                var join_value = $('.enter-code').val();
+                var meetingUrl = window.location.origin+"?meetingID="+join_value;
+                window.location.replace(meetingUrl);
+            })
+            $(document).on("click", ".new-meeting", function(){
+                var eight_d_value=Math.floor(Math.random() * 100000000);
+                var meetingUrl = window.location.origin+"?meetingID="+ eight_d_value;
+                window.location.replace(meetingUrl);
+            })
+        })
+    </script>
+</body>
+</html>

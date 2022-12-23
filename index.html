@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Meet</title>
+    
+    <link rel="stylesheet" href="public/Assets/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Matarial+Icons">
+    <link rel="stylesheet" href="public/Assets/css/style.css">
+    <script src="public/Assets/js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="public/Assets/js/app.js"></script>
+    <script>
+        $(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            var meeting_id = urlParams.get('meetingID');
+            var user_id = window.prompt('Enter your userid');
+            if(!user_id || !meeting_id){
+                alert('User id or meeting id missing');
+                window.location.href = '/action.html';
+                return;
+            }
+            $("#meetingContainer").show();
+            MyApp._init(user_id,meeting_id);
+        })
+    </script>
+
+</head>
+<body>
+    <main class="d-flex flex-column home-wrap">
+        <div class="g-top text-light">
+            <div class="top-remote-video-show-wrap d-flex">
+                <div id="meetingContainer" class="w-75" style="display:none;"> 
+                <div class="call-wrap" style="background-color: black;">
+                <div class="video-warp" id="divUsers" style="display: flex; flex-wrap:wrap">
+                <div id="me" class="userbox display-center flex-column">
+                    <h2 class="display-center" style="font-size:14px;"></h2>
+                    <div class="display-center">
+                        <video autoplay muted id = "locaVideoPlayer"></video>
+                    </div>
+                </div>
+                <div id="otherTemplate" class="userbox display-center flex-column" style="display:none">
+                    <h2 class="display-center" style="font-size: 14px;"></h2>
+                    <div class="display-center">
+                        <video autoplay muted></video>
+                        <audio autoplay controls muted style="display:none"></audio>
+                    </div>      
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="g-top-left bg-light text-secondary w-25 d-flex aling-items-center justify-content-between pl-2 pr-2">
+                <div class="top-left-participant-wrap pt-2 cursor-pointer">
+                   <div class="top-left-participant-icon">
+                    <span class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                      </svg></span>
+                   </div> 
+                   <div class="top-left-participant-count"></div>
+                </div>
+                <div class="top-left-chat-wrap pt-2 cursor-pointer">
+                   <span class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
+                    <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                  </svg></span> 
+                </div>
+                <div class="top-left-time-wrap"></div>
+            </div>
+        </div>
+        <div class="g-bottom bg-light m-0 d-flex justify-content-between aling-items-center">
+          <div class="bottom-left d-flex" style="height : 10vh">
+            <div class="display-center cursor-pointer meeting-details-button">
+                Meeting Details
+              <span class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+              </svg></span>
+            </div>
+           </div> 
+          <div class="bottom-middle d-flex just-content-center align-items-center" style="height:10vh">
+            <div class="mic-toggle-wrap action-icon-style display-center mr-2 cursor-pointer " id="miceMuteUnmute">
+                <span class="material-icons">mic_off</span>
+            </div>
+            <div class="end-call-wrap action-icon-style display-center mr-2 cursor-pointer">
+                <span class="material-icons text-danger">call</span>
+            </div>
+            <div class="video-toggle-wrap action-icon-style display-center cursor-pointer" id = "videoCamOnOff">
+                <span class="material-icons ">videocam_off</span>
+            </div>
+          </div> 
+          <div class="bottom-right d-flex just-content-center align-items-center mr-3 " style="height: 10vh">
+            <div class="present-now-wrap d-flex just-content-center flex-column align-items-center mr-5 cursor-pointer" id ="ScreenShareOnOf">
+                <span class="material-icons">present_to_all</span>
+                  <div class="">Present_now</div>
+            </div>
+            
+            <div class="option-wrap cursor-pointer display-center " style="height: 10vh; position:relative;">
+            <div class="option-icon">
+                <snap class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                  </svg></snap>
+            </div>
+            </div>
+          </div>  
+        </div>
+    </main>
+</body>
+</html>
